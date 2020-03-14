@@ -4,24 +4,59 @@
 <div class="form-row">
     <div class="form-group col-md-6">
         <form method="get" action="/main" class="form-inline">
-            <input type="text" name="filter" class="form-control" value="${filter?ifExists}" placeholder="Search by tag" />
+            <input
+                    type="text"
+                    name="filter"
+                    class="form-control"
+                    value="${filter?ifExists}"
+                    placeholder="Search by tag"
+            />
             <button type="submit" class="btn btn-primary ml-2">Search</button>
         </form>
     </div>
 </div>
 
-<a class="btn btn-primary" data-toggle="collapse" href="#newMessageForm" role="button" aria-expanded="false" aria-controls="newMessageForm">
+<a
+        class="btn btn-primary"
+        data-toggle="collapse"
+        href="#newMessageForm"
+        role="button"
+        aria-expanded="false"
+        aria-controls="newMessageForm"
+>
     Add new message
 </a>
-<div class="collapse" id="newMessageForm">
+<div class="collapse <#if message??>show</#if>" id="newMessageForm">
     <div class="form-group mt-3">
         <form method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <input type="text" name="text" class="form-control" placeholder="Type a message"/>
+                <input
+                        type="text"
+                        name="text"
+                        class="form-control ${(textError??)?string('is-invalid', '')}"
+                        value="<#if message??>${message.text}</#if>"
+                        placeholder="Type a message"
+                />
+                <#if textError??>
+                    <div class="invalid-feedback">
+                        ${textError}
+                    </div>
+                </#if>
             </div>
 
             <div class="form-group">
-                <input type="text" name="tag" class="form-control" placeholder="Type a tag"/>
+                <input
+                        type="text"
+                        name="tag"
+                        value="<#if message??>${message.tag}</#if>"
+                        class="form-control"
+                        placeholder="Type a tag"
+                />
+                <#if tagError??>
+                    <div class="invalid-feedback">
+                        ${tagError}
+                    </div>
+                </#if>
             </div>
 
             <div class="form-group">
