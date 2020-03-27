@@ -72,7 +72,7 @@
         </div>
     </#if>
 
-    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <input type="hidden" name="_csrf" value="${_csrf.token}" />
 
     <#if !isRegisterForm>
         <a href="/registration">Add new user</a>
@@ -87,7 +87,7 @@
 
 <#macro logout>
 <form action="/logout" method="post">
-    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <input type="hidden" name="_csrf" value="${_csrf.token}" />
     <button class="btn btn-primary" type="submit">
         <#if user??>Log Out<#else>Log In</#if>
     </button>
