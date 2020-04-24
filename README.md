@@ -1,4 +1,4 @@
-# Twitter
+# Simple Twitter
 
 [Demo](https://morkvaivan-twitter.herokuapp.com/)
 
